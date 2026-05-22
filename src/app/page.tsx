@@ -15,7 +15,9 @@ export default function Home() {
           />
         </a>
         <a
-          href="mailto:snimorak@gmail.com?subject=Tendr%20enquiry"
+          href="https://calendar.app.google/st8KsrJpXH3VfWnH7"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex h-10 shrink-0 items-center justify-center rounded-full bg-[#44B1FF] px-4 text-sm font-semibold text-white transition-colors hover:bg-[#2f9eee] sm:px-5"
         >
           Contact Us
@@ -35,7 +37,9 @@ export default function Home() {
             </p>
             <div>
               <a
-                href="mailto:snimorak@gmail.com?subject=Tendr%20enquiry"
+                href="https://calendar.app.google/st8KsrJpXH3VfWnH7"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-12 items-center justify-center rounded-full bg-[#44B1FF] px-6 text-base font-semibold text-white transition-colors hover:bg-[#2f9eee]"
               >
                 Contact Us
