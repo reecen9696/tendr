@@ -51,8 +51,8 @@ export default function Home() {
             <Image
               src="/hero.png"
               alt="Tendr review interface showing a structural drawing with pile counts and linear cuts"
-              width={2000}
-              height={1200}
+              width={1656}
+              height={950}
               priority
               className="h-auto w-full rounded-lg"
             />
