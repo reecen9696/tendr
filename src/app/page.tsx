@@ -26,12 +26,12 @@ export default function Home() {
         <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 py-10 sm:gap-12 sm:py-12 lg:grid-cols-2 lg:gap-16 lg:py-20">
           <div className="flex flex-col gap-5 sm:gap-6">
             <h1 className="text-3xl font-semibold leading-[1.1] tracking-tight sm:text-4xl md:text-6xl lg:text-7xl">
-              Construction tendering, finally without the chaos.
+              Generate a tender in under 30 minutes
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg md:text-xl">
-              Tendr turns drawings, schedules, and scopes into structured,
-              reviewable takeoffs — so estimators spend less time chasing
-              markups and more time winning work.
+              Upload the drawings, scope and BOQ template and get back a priced
+              bill of quantities, scope of work and proposal — so you can
+              respond to every RFQ, not just the ones worth a three-day takeoff.
             </p>
             <div>
               <a
