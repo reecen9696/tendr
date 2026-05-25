@@ -3,7 +3,7 @@
   --ink-soft: #111317;
   --cream: #f3f0e7;
   --cream-deep: #ebe7da;
-  --warm-white: #f6f2ea;
+  --warm-white: #f2efe9;
   --card: #ffffff;
   --line: #e2ddcd;
   --line-dark: rgba(255, 255, 255, 0.1);
@@ -16,8 +16,9 @@
   --sand: #ffe1bd;
   --sage: #cbe6cd;
   --orange: #ff7a1a;
-  --maxw: 1180px;
-  --f: var(--font-hanken), "Hanken Grotesk", sans-serif;
+  --maxw: 1216px;
+  --f: var(--font-libre), "Libre Franklin", sans-serif;
+  --f-display: var(--font-kit-sans), "Arial Black", sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -48,7 +49,7 @@ img {
 .wrap {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 32px;
 }
 
 h1,
@@ -57,6 +58,11 @@ h3 {
   font-weight: 800;
   line-height: 1.03;
   letter-spacing: -0.035em;
+}
+h1,
+h2,
+.q-text {
+  font-family: var(--f-display);
 }
 .display {
   font-weight: 900;
@@ -89,9 +95,9 @@ h3 {
   align-items: center;
   gap: 9px;
   font-family: var(--f);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 16px;
-  padding: 15px 22px;
+  padding: 16px 22px;
   border-radius: 12px;
   border: 0;
   cursor: pointer;
@@ -209,23 +215,25 @@ header {
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1.06fr;
-  gap: 54px;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
   align-items: center;
   position: relative;
 }
 .hero h1 {
-  font-size: clamp(40px, 5.3vw, 66px);
-  margin: 0 0 22px;
+  font-size: clamp(36px, 5.2vw, 56px);
+  line-height: 1;
+  margin: 0 0 18px;
   color: var(--warm-white);
 }
 .hero h1 .u {
   color: var(--blue);
 }
 .hero p.lead {
-  color: #e7e2d7;
-  font-size: 19px;
-  max-width: 44ch;
+  color: var(--warm-white);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 46ch;
 }
 .hero-frame {
   background: #acd1eb;
@@ -239,7 +247,7 @@ header {
   display: block;
 }
 .hero-cta {
-  margin: 30px 0 20px;
+  margin: 26px 0 0;
 }
 .hero-note {
   display: flex;
@@ -410,7 +418,18 @@ header {
 
 /* ---------- generic section ---------- */
 .sec {
-  padding: 104px 0;
+  padding: 120px 0;
+}
+
+/* hero text centers when the grid stacks (matches text-center sm:text-left) */
+@media (max-width: 960px) {
+  .hero-grid {
+    text-align: center;
+  }
+  .hero p.lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .sec-tight {
   padding: 78px 0;

@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
+import { Libre_Franklin } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import "./globals.css";
 
-const hanken = Hanken_Grotesk({
+// Display face — used for headings.
+const kitSans = localFont({
+  src: "./fonts/KitSans-Bold.woff2",
+  weight: "700",
+  style: "normal",
+  variable: "--font-kit-sans",
+  display: "swap",
+});
+
+// Body face.
+const libreFranklin = Libre_Franklin({
   subsets: ["latin"],
-  variable: "--font-hanken",
+  variable: "--font-libre",
   display: "swap",
 });
 
@@ -22,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={hanken.variable}>
+    <html lang="en" className={`${kitSans.variable} ${libreFranklin.variable}`}>
       <body>
         {children}
         <Analytics />
