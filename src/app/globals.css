@@ -203,7 +203,7 @@ header {
 .hero {
   background: var(--ink);
   color: #fff;
-  padding: 124px 0 100px;
+  padding: 160px 0;
   position: relative;
   overflow: hidden;
 }
@@ -1052,7 +1052,7 @@ footer {
     padding: 52px 0;
   }
   .hero {
-    padding: 100px 0 72px;
+    padding: 120px 0 96px;
   }
   .cards4 {
     grid-template-columns: 1fr;
