@@ -30,10 +30,12 @@ export default function LandingFx() {
           i.classList.remove("open");
           const ans = i.querySelector<HTMLElement>(".faq-a");
           if (ans) ans.style.maxHeight = "";
+          i.querySelector(".faq-q")?.setAttribute("aria-expanded", "false");
         });
         if (!open && a) {
           item.classList.add("open");
           a.style.maxHeight = `${a.scrollHeight}px`;
+          q.setAttribute("aria-expanded", "true");
         }
       };
       q.addEventListener("click", fn);

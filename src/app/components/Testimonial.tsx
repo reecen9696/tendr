@@ -2,15 +2,15 @@ import Image from "next/image";
 
 export default function Testimonial() {
   return (
-    <section className="sec s-cream">
+    <section className="sec s-dark">
       <div className="wrap">
         <div className="quote-grid">
           <div className="reveal">
             <Image
               src="/lawrence.png"
-              alt="Lawrence Yeo"
-              width={356}
-              height={357}
+              alt="Lawrence"
+              width={1086}
+              height={1448}
               className="q-media"
             />
           </div>
@@ -28,7 +28,7 @@ export default function Testimonial() {
               no time to price them. Now we put a number on the lot, and that is
               the difference between a quiet month and a full book.
             </p>
-            <p className="q-name">Lawrence Yeo</p>
+            <p className="q-name">Lawrence</p>
             <p className="q-role">Victorian demolition &amp; cutting contractor</p>
           </div>
         </div>

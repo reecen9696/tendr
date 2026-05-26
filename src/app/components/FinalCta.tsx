@@ -1,23 +1,17 @@
-import { CALENDAR_URL } from "./constants";
+import CtaButtons from "./CtaButtons";
 
 export default function FinalCta() {
   return (
-    <section className="sec-tight s-dark">
+    <section className="sec-tight s-cream">
       <div className="wrap">
         <div className="cta-panel reveal">
           <h2 className="display">Ready. Set. Quote.</h2>
           <p>
-            Bring a real set of drawings to a 15-minute call and we will show you
-            exactly what tendr sends back. <strong>No setup, nothing to install.</strong>
+            Bring a real set of drawings to a 20-minute call and we&apos;ll show
+            you exactly what tendr sends back. You&apos;ll talk to an estimator,
+            not a salesperson. Nothing to install.
           </p>
-          <a
-            className="btn btn-dark"
-            href={CALENDAR_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Book a call
-          </a>
+          <CtaButtons location="final" tone="blue" align="center" />
         </div>
       </div>
     </section>

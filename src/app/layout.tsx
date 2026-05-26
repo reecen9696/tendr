@@ -24,7 +24,7 @@ const libreFranklin = Libre_Franklin({
 export const metadata: Metadata = {
   title: "tendr — Price a tender in 30 minutes, not three days",
   description:
-    "Drop in the drawings, scope and your pricing sheet. tendr does the takeoff and writes the quote — so you can put a price on every job that comes in.",
+    "AI takeoff and tender pricing for Australian subcontractors. Forward in the RFQ and drawings; tendr prices the job from your own rates and drafts the methodology, ready for your estimator to review and sign off.",
 };
 
 export default function RootLayout({

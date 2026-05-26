@@ -1,6 +1,6 @@
 const PLUS = (
   <span className="pm">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" aria-hidden="true">
       <path d="M12 5v14M5 12h14" />
     </svg>
   </span>
@@ -8,52 +8,72 @@ const PLUS = (
 
 const items: { q: string; a: React.ReactNode }[] = [
   {
+    q: "What if tendr gets the takeoff wrong?",
+    a: (
+      <>
+        Every tender is reviewed by your estimator before it leaves. tendr flags
+        anything it&apos;s unsure about and shows where each quantity came from on
+        the drawing. You&apos;re never signing off a black box.
+      </>
+    ),
+  },
+  {
+    q: "Does my rate library leave my business?",
+    a: (
+      <>
+        No. Your rates sit in your account. They&apos;re never pooled with other
+        firms, never used to train shared models, never shared. Your rates are
+        your margin — they stay yours.
+      </>
+    ),
+  },
+  {
     q: "What do I need to give it?",
     a: (
       <>
-        Three things: the drawings as a PDF, the scope of works, and your own
-        BOQ template. Got addenda or a past quote? Drop those in too and tendr
-        uses them.
+        The drawings PDF and the RFQ email. Add your BOQ template, the scope and
+        any addenda if you have them. tendr uses whatever you send.
       </>
     ),
   },
   {
-    q: "How long does a tender actually take?",
+    q: "What trades does it actually work for?",
     a: (
       <>
-        The first pass comes back in a few minutes. Once you have checked the
-        lines and dropped in your rates, plan on about half an hour start to
-        finish, versus two or three days by hand.
+        Demolition, concrete cutting, piling, soil-nail and shoring, civil,
+        structural steel and earthworks. It doesn&apos;t size rebar or run
+        structural calcs — your engineer and estimator still own the engineering
+        call.
       </>
     ),
   },
   {
-    q: "Can I trust the numbers?",
+    q: "How long does setup take?",
+    // CONFIRM — onboarding line
     a: (
       <>
-        tendr gets the takeoff most of the way there, then you check it, the
-        same as you would check any estimator. Every quantity traces back to the
-        drawing, and tendr flags the lines worth a second look. Nothing leaves
-        without your sign-off.
+        Guided by our team, usually about two weeks. Most subbies run their first
+        real tender inside that.
       </>
     ),
   },
   {
-    q: "Do I have to change how my team works?",
+    q: "Do I still need an estimator?",
     a: (
       <>
-        No. It fills your templates, uses your format and puts your logo on the
-        proposal. The output looks like the tenders your firm already sends, so
-        your team just gets there faster.
+        Yes. tendr is built for estimators, not to replace them — it clears the
+        slow takeoff so they spend their time on the call that wins the job. And
+        if a director can&apos;t read drawings, tendr gets the tender priced — but
+        a human still signs it off.
       </>
     ),
   },
   {
-    q: "Is my data safe?",
+    q: "Where is my data stored, and is it safe?",
     a: (
       <>
-        Yes. Your drawings, jobs and pricing are stored securely, kept in
-        Australia, and stay yours. Never shared, never sold.
+        In Australia, encrypted. Your drawings, tenders and rates stay yours —
+        never sold, never shared, never used to train shared models.
       </>
     ),
   },
@@ -61,8 +81,9 @@ const items: { q: string; a: React.ReactNode }[] = [
     q: "What does it cost?",
     a: (
       <>
-        It depends on how many tenders you run. Book a quick call and we will
-        walk through your numbers and what makes sense for your firm.
+        Your first tender is free — send a real RFQ and see the full submission
+        tendr produces. From there we&apos;ll talk through a plan that fits your
+        business.
       </>
     ),
   },
@@ -70,19 +91,23 @@ const items: { q: string; a: React.ReactNode }[] = [
 
 export default function Faq() {
   return (
-    <section className="sec s-cream" id="faq">
+    <section className="sec s-dark" id="faq">
       <div className="wrap">
         <div style={{ textAlign: "center", marginBottom: 46 }} className="reveal">
           <h2 className="big">Questions, sorted.</h2>
         </div>
         <div className="faq reveal" data-d="1">
-          {items.map((item) => (
+          {items.map((item, i) => (
             <div className="faq-item" key={item.q}>
-              <button className="faq-q">
+              <button
+                className="faq-q"
+                aria-expanded="false"
+                aria-controls={`faq-a-${i}`}
+              >
                 {item.q}
                 {PLUS}
               </button>
-              <div className="faq-a">
+              <div className="faq-a" id={`faq-a-${i}`} role="region">
                 <p>{item.a}</p>
               </div>
             </div>

@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // The aiestimator product is a separate app (Vite/FastAPI) — not linted here.
+    "aiestimator/**",
   ]),
 ]);
 

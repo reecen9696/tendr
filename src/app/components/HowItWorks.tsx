@@ -1,95 +1,144 @@
-import { CALENDAR_URL } from "./constants";
+import Image from "next/image";
+import type { ReactNode } from "react";
+
+// --- Step 1: a fake RFQ email (built in UI, anonymised) ---
+function EmailMock() {
+  return (
+    <div className="email-mock">
+      <div className="em-head">
+        <Image
+          src="/sam.png"
+          alt="Sam Doyle"
+          width={486}
+          height={574}
+          className="em-avatar"
+        />
+        <div className="em-meta">
+          <div className="em-from">
+            Sam Doyle <span>· tenders@meridian-build.com.au</span>
+          </div>
+        </div>
+      </div>
+      <p className="em-body">
+        Morning — can you price the attached scope for the secant pile demolition
+        and hydroblasting? Pricing due COB Friday.
+      </p>
+      <div className="em-attach">
+        <span className="em-label">2 attachments</span>
+        <div className="em-files">
+          <span className="em-file">
+            <span className="ic pdf">PDF</span> Drawings.pdf
+          </span>
+          <span className="em-file">
+            <span className="ic xls">XLS</span> BOQ-secant-piles.xlsx
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// --- Step 2: the real drawing, calmed down, with clean detection boxes ---
+const PILE_BOXES = [13, 20, 27, 34, 41, 48, 55, 62, 69, 76, 83]; // even row of pile detections
+function DrawingMock() {
+  return (
+    <div className="drawing-mock">
+      <div className="dm-inner">
+        <Image
+          src="/design.png"
+          alt="A rail-bridge general-arrangement drawing with tendr detecting and counting each bored pile"
+          fill
+          sizes="(max-width: 960px) 90vw, 400px"
+          className="dm-img"
+        />
+        <div className="dm-wash" />
+        <div className="dm-overlay">
+          <span className="dm-band" />
+          {PILE_BOXES.map((left, i) => (
+            <span className="dm-box" key={i} style={{ left: `${left}%` }} />
+          ))}
+          <span className="dm-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
+              <path d="M3 7V4h3M21 7V4h-3M3 17v3h3M21 17v3h-3" />
+              <path d="M7 12h10" />
+            </svg>
+            24 bored piles
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// --- Step 3: a minimal, signed-off report (built in UI, fake firm) ---
+function ReportMock() {
+  return (
+    <div className="report-mock">
+      <div className="rm-top">
+        <div className="rm-logo">
+          <span className="mark">N</span> Northline Civil
+        </div>
+        <span className="rm-page">p. 1</span>
+      </div>
+      <div className="rm-title">Tender — Secant Pile Works</div>
+      <div className="rm-sub">Priced BOQ + methodology · Rev A</div>
+      <div className="rm-rows">
+        <div className="rm-row">
+          <span className="rm-cell" style={{ width: "52%" }} />
+          <span className="rm-val" />
+        </div>
+        <div className="rm-row">
+          <span className="rm-cell" style={{ width: "44%" }} />
+          <span className="rm-val" />
+        </div>
+        <div className="rm-row">
+          <span className="rm-cell" style={{ width: "58%" }} />
+          <span className="rm-val" />
+        </div>
+      </div>
+      <div className="rm-signoff">
+        <span className="tick">✓</span> Reviewed &amp; signed off — K. Barker,
+        Estimator
+      </div>
+    </div>
+  );
+}
+
+const STEPS: { title: string; body: string; art: ReactNode }[] = [
+  {
+    title: "Forward the RFQ.",
+    body: "Send the head contractor's email and the drawings PDF to your tendr inbox. tendr picks up the scope, the quote-due date and the builder from the email.",
+    art: <EmailMock />,
+  },
+  {
+    title: "tendr does the takeoff, prices it, drafts the methodology.",
+    body: "Quantities come straight off the drawings. Pricing uses your own rate library — not a generic database. You get a priced BOQ and a methodology draft in your format.",
+    art: <DrawingMock />,
+  },
+  {
+    title: "Your estimator reviews and signs off.",
+    body: "Nothing leaves your business until a human checks the numbers and the methodology. You send the quote to the builder yourself.",
+    art: <ReportMock />,
+  },
+];
 
 export default function HowItWorks() {
   return (
-    <section className="sec s-cream">
+    <section className="sec s-cream" id="how-it-works">
       <div className="wrap">
-        <div className="intro-grid">
-          <h2 className="triad display reveal">
-            Drop&nbsp;it&nbsp;in.
-            <br />
-            Check&nbsp;it.
-            <br />
-            <span className="b">Send&nbsp;it.</span>
-          </h2>
-          <div className="intro-copy reveal" data-d="1">
-            <p>
-              Every RFQ is the same grind. Read the drawings, count it all up,
-              write the quote.{" "}
-              <b>
-                tendr does the slow part for you. It reads the plans, counts the
-                work, fills your bill of quantities and writes the scope
-              </b>
-              , all in one place. You give it a check and send it off.
-            </p>
-            <a
-              className="btn btn-blue"
-              href={CALENDAR_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Book a call
-            </a>
-          </div>
+        <div className="reveal">
+          <span className="eyebrow">How it works</span>
+          <h2 className="big sec-head">Three steps, and a human signs the number.</h2>
         </div>
-        <div className="cards4">
-          <div className="fcard reveal" data-d="0">
-            <div className="ico">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0 0 16.5 9h-1.875a1.875 1.875 0 0 1-1.875-1.875V5.25A3.75 3.75 0 0 0 9 1.5H5.625ZM7.5 15a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 7.5 15Zm.75 2.25a.75.75 0 0 0 0 1.5H12a.75.75 0 0 0 0-1.5H8.25Z"
-                />
-                <path d="M12.971 1.816A5.23 5.23 0 0 1 14.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 0 1 3.434 1.279 9.768 9.768 0 0 0-6.963-6.963Z" />
-              </svg>
+        <div className="steps">
+          {STEPS.map((step, i) => (
+            <div className="step reveal" data-d={i} key={i}>
+              <div className="step-shot">{step.art}</div>
+              <div className="num">{i + 1}</div>
+              <h3>{step.title}</h3>
+              <p>{step.body}</p>
             </div>
-            <h3>Reads your drawings</h3>
-            <p>
-              Counts the piles, measures the cuts and works out the volumes,
-              straight off the PDF.
-            </p>
-          </div>
-          <div className="fcard reveal" data-d="1">
-            <div className="ico">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M3 3.75A1.5 1.5 0 0 0 1.5 5.25v13.5A1.5 1.5 0 0 0 3 20.25h18a1.5 1.5 0 0 0 1.5-1.5V5.25A1.5 1.5 0 0 0 21 3.75H3Zm8.25 4.5V6H3.75v2.25h7.5Zm1.5 0h7.5V6h-7.5v2.25Zm7.5 1.5h-7.5v3h7.5v-3Zm0 4.5h-7.5V18h7.5v-3.75ZM11.25 18v-3.75h-7.5V18h7.5Zm0-5.25v-3h-7.5v3h7.5Z"
-                />
-              </svg>
-            </div>
-            <h3>Fills your BOQ</h3>
-            <p>
-              Every quantity dropped into your own pricing sheet, ready for your
-              rates.
-            </p>
-          </div>
-          <div className="fcard reveal" data-d="2">
-            <div className="ico">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z" />
-                <path d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z" />
-              </svg>
-            </div>
-            <h3>Writes the scope</h3>
-            <p>
-              Method, program, risks and exclusions, written up in your format.
-            </p>
-          </div>
-          <div className="fcard reveal" data-d="3">
-            <div className="ico">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
-              </svg>
-            </div>
-            <h3>Builds the proposal</h3>
-            <p>
-              A tidy, branded quote, ready to check and send to the head
-              contractor.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </section>
