@@ -44,12 +44,9 @@ export function Hero() {
               <span className="big">14 days</span> saved this month
             </span>
           </div>
-          {/* [SCREENSHOT OF REVIEW UI REQUIRED] — using existing hero.png until a
-              landscape review-UI capture exists: a plan with paving/garden-bed areas
-              measured and the priced takeoff lines beside it. */}
           <div className="hero-frame">
             <Image
-              src="/hero.png"
+              src="/landscaping-hero.png"
               alt="tendr's review screen: a landscape plan with paving and garden bed areas measured and the priced takeoff lines beside it"
               width={1656}
               height={950}
@@ -280,11 +277,9 @@ export function Takeoff() {
           </div>
 
           <div className="reveal" data-d="1">
-            {/* [SCREENSHOT OF REVIEW UI REQUIRED] — "plans in → quantities out".
-                Using existing hero.png until a fresh landscape capture exists. */}
             <div className="hero-frame">
               <Image
-                src="/hero.png"
+                src="/landscaping-hero.png"
                 alt="A landscape plan on the left with areas and plant counts marked, and the matching priced bill of quantities on the right"
                 width={1656}
                 height={950}
